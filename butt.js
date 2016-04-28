@@ -15,10 +15,10 @@ var button = {
 }
 
 function exit() {
-  for (l in led) {
+  for (var l in led) {
     l.unexport();
   }
-  for (b in button) {
+  for (var b in button) {
     b.unexport();
   }
   process.exit();
