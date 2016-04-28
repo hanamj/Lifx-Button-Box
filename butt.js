@@ -17,6 +17,7 @@ var button = {
 function exit() {
   for (var l in led) {
     if (led.hasOwnProperty(l)) {
+      console.log(l);
       l.unexport();
     }
   }
