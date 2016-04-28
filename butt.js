@@ -16,10 +16,14 @@ var button = {
 
 function exit() {
   for (var l in led) {
-    l.unexport();
+    if (led.hasOwnProperty(l)) {
+      l.unexport();
+    }
   }
   for (var b in button) {
-    b.unexport();
+    if (button.hasOwnProperty(b)) {
+      b.unexport();
+    }
   }
   process.exit();
 }
@@ -57,3 +61,5 @@ button.white.watch(function (err, value) {
 
 
 process.on('SIGINT', exit);
+
+console.log("Listening...");
