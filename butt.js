@@ -1,24 +1,35 @@
-var Gpio = require('onoff').Gpio,
-  led = new Gpio(14, 'out'),
-  led2 = new Gpio(15, 'out'),
-  button = new Gpio(4, 'in', 'both');
- 
+var Gpio = require('onoff').Gpio;
+var led = {
+  'red': new Gpio(9, 'out'),
+  'yellow': new Gpio(11, 'out'),
+  'blue': new Gpio(25, 'out'),
+  'green': new Gpio(8, 'out'),
+  'white': new Gpio(7, 'out')
+}
+var button = {
+  'red': new Gpio(4, 'in', 'both'),
+  'yellow': new Gpio(17, 'in', 'both'),
+  'blue': new Gpio(14, 'in', 'both'),
+  'green': new Gpio(15, 'in', 'both'),
+  'white': new Gpio(18, 'in', 'both'),
+}
+
 function exit() {
-  led.unexport();
-  led2.unexport();
-  button.unexport();
+  for (l in led) {
+    l.unexport();
+  }
+  for (b in button) {
+    b.unexport();
+  }
   process.exit();
 }
- 
-led.writeSync(1);
-led2.writeSync(1);
 
-button.watch(function (err, value) {
+button.red.watch(function (err, value) {
   if (err) {
     throw err;
   }
  
-  led.writeSync(value);
+  led.red.writeSync(value);
   console.log(value);
 });
  
