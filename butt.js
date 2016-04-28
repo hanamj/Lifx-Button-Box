@@ -15,17 +15,7 @@ var button = {
 }
 
 function exit() {
-  for (var l in led) {
-    if (led.hasOwnProperty(l)) {
-      console.log(l);
-      l.unexport();
-    }
-  }
-  for (var b in button) {
-    if (button.hasOwnProperty(b)) {
-      b.unexport();
-    }
-  }
+  led.red.unexport();
   process.exit();
 }
 
