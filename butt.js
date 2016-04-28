@@ -25,12 +25,35 @@ function exit() {
 }
 
 button.red.watch(function (err, value) {
-  if (err) {
-    throw err;
-  }
- 
+  if (err) {throw err;}
   led.red.writeSync(value);
-  console.log(value);
+  console.log("Red: " + value);
 });
- 
+
+button.yellow.watch(function (err, value) {
+  if (err) {throw err;}
+  led.yellow.writeSync(value);
+  console.log("Yellow: " + value);
+});
+
+button.blue.watch(function (err, value) {
+  if (err) {throw err;}
+  led.blue.writeSync(value);
+  console.log("Blue: " + value);
+});
+
+button.green.watch(function (err, value) {
+  if (err) {throw err;}
+  led.green.writeSync(value);
+  console.log("Green: " + value);
+});
+
+button.white.watch(function (err, value) {
+  if (err) {throw err;}
+  led.white.writeSync(value);
+  console.log("White: " + value);
+});
+
+
+
 process.on('SIGINT', exit);
