@@ -16,6 +16,17 @@ var button = {
 
 function exit() {
   led.red.unexport();
+  led.yellow.unexport();
+  led.blue.unexport();
+  led.green.unexport();
+  led.white.unexport();
+
+  button.red.unexport();
+  button.yellow.unexport();
+  button.blue.unexport();
+  button.green.unexport();
+  button.white.unexport();
+
   process.exit();
 }
 
