@@ -14,11 +14,11 @@ var button = {
   'white': new Gpio(24, 'in', 'rising'),
 }
 
-led.red.writeSync(1);
-led.yellow.writeSync(1);
-led.blue.writeSync(1);
-led.green.writeSync(1);
-led.white.writeSync(1);
+// led.red.writeSync(1);
+// led.yellow.writeSync(1);
+// led.blue.writeSync(1);
+// led.green.writeSync(1);
+// led.white.writeSync(1);
 
 function exit() {
   led.red.unexport();
