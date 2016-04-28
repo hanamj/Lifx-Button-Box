@@ -10,7 +10,7 @@ var button = {
   'red': new Gpio(21, 'in', 'rising'),
   'yellow': new Gpio(17, 'in', 'rising'),
   'blue': new Gpio(23, 'in', 'rising'),
-  'green': new Gpio(22, 'in', 'rising'),
+  'green': new Gpio(4, 'in', 'rising'),
   'white': new Gpio(24, 'in', 'rising'),
 }
 
