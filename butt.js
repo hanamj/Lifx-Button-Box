@@ -7,9 +7,9 @@ var led = {
   'white': new Gpio(34, 'low')
 }
 var button = {
-  'red': new Gpio(24, 'in', 'rising'),
-  'yellow': new Gpio(23, 'in', 'rising'),
-  'blue': new Gpio(18, 'in', 'rising'),
+  'red': new Gpio(21, 'in', 'rising'),
+  'yellow': new Gpio(22, 'in', 'rising'),
+  'blue': new Gpio(10, 'in', 'rising'),
   'green': new Gpio(8, 'in', 'rising'), //GOOD
   'white': new Gpio(7, 'in', 'rising'), //GOOD
 }
