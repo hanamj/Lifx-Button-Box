@@ -1,17 +1,17 @@
 var Gpio = require('onoff').Gpio;
 var led = {
-  'red': new Gpio(9, 'low'),
-  'yellow': new Gpio(11, 'low'),
-  'blue': new Gpio(25, 'low'),
-  'green': new Gpio(8, 'low'),
-  'white': new Gpio(24, 'low')
+  'red': new Gpio(30, 'low'),
+  'yellow': new Gpio(31, 'low'),
+  'blue': new Gpio(32, 'low'),
+  'green': new Gpio(33, 'low'),
+  'white': new Gpio(34, 'low')
 }
 var button = {
-  'red': new Gpio(21, 'in', 'rising'),
-  'yellow': new Gpio(17, 'in', 'rising'),
-  'blue': new Gpio(23, 'in', 'rising'),
-  'green': new Gpio(4, 'in', 'rising'),
-  'white': new Gpio(7, 'in', 'rising'),
+  'red': new Gpio(9, 'in', 'rising'),
+  'yellow': new Gpio(11, 'in', 'rising'),
+  'blue': new Gpio(25, 'in', 'rising'),
+  'green': new Gpio(8, 'in', 'rising'),
+  'white': new Gpio(7, 'in', 'rising'), //GOOD
 }
 
 // led.red.writeSync(1);
