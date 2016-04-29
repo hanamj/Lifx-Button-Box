@@ -1,24 +1,33 @@
 var Gpio = require('onoff').Gpio;
 var led = {
-  'red': new Gpio(30, 'low'),
-  'yellow': new Gpio(31, 'low'),
-  'blue': new Gpio(32, 'low'),
-  'green': new Gpio(33, 'low'),
-  'white': new Gpio(34, 'low')
+  'red': new Gpio(21, 'low'),
+  'yellow': new Gpio(22, 'low'),
+  'blue': new Gpio(10, 'low'),
+  'green': new Gpio(9, 'low'),
+  'white': new Gpio(11, 'low')
 }
 var button = {
-  'red': new Gpio(1, 'in', 'both'),
-  'yellow': new Gpio(4, 'in', 'both'),
-  'blue': new Gpio(0, 'in', 'both'),
+  'red': new Gpio(1, 'in', 'both'), //GOOD
+  'yellow': new Gpio(4, 'in', 'both'), //GOOD
+  'blue': new Gpio(0, 'in', 'both'), //GOOD
   'green': new Gpio(8, 'in', 'both'), //GOOD
   'white': new Gpio(7, 'in', 'both'), //GOOD
 }
 
-// led.red.writeSync(1);
-// led.yellow.writeSync(1);
-// led.blue.writeSync(1);
-// led.green.writeSync(1);
-// led.white.writeSync(1);
+var i = 0;
+setInterval(function () {
+  led.red.writeSync(i);
+  led.yellow.writeSync(i);
+  led.blue.writeSync(i);
+  led.green.writeSync(i);
+  led.white.writeSync(i);
+  if (i == 1) {
+    i = 0;
+  } else {
+    i = 1;
+  }
+  console.log("LEDS: " + i);
+}, 1000)
 
 function exit() {
   led.red.unexport();
