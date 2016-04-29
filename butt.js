@@ -7,11 +7,11 @@ var led = {
   'white': new Gpio(11, 'low')
 }
 var button = {
-  'red': new Gpio(1, 'in', 'falling'), //GOOD
-  'yellow': new Gpio(4, 'in', 'falling'), //GOOD
-  'blue': new Gpio(0, 'in', 'falling'), //GOOD
-  'green': new Gpio(8, 'in', 'falling'), //GOOD
-  'white': new Gpio(7, 'in', 'falling'), //GOOD
+  'red': new Gpio(1, 'in', 'rising'), //GOOD
+  'yellow': new Gpio(4, 'in', 'rising'), //GOOD
+  'blue': new Gpio(0, 'in', 'rising'), //GOOD
+  'green': new Gpio(8, 'in', 'rising'), //GOOD
+  'white': new Gpio(7, 'in', 'rising'), //GOOD
 }
 
 var isOn = {
