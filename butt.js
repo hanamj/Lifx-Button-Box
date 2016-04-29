@@ -14,6 +14,14 @@ var button = {
   'white': new Gpio(7, 'in', 'both'), //GOOD
 }
 
+var isOn = {
+  red: false,
+  yellow: false,
+  blue: false,
+  green: false,
+  white: false
+}
+
 var i = 0;
 setInterval(function () {
   led.red.writeSync(i);
@@ -47,32 +55,53 @@ function exit() {
 
 button.red.watch(function (err, value) {
   if (err) {throw err;}
-  led.red.writeSync(value);
-  console.log("Red: " + value);
+
+  isOn.red = !isOn.red;
+  var v = 0;
+  if (isOn.red) v = 1;
+  led.red.writeSync(v);
+
+  console.table(isOn);
 });
 
 button.yellow.watch(function (err, value) {
   if (err) {throw err;}
-  led.yellow.writeSync(value);
-  console.log("Yellow: " + value);
+  isOn.yellow = !isOn.yellow;
+  var v = 0;
+  if (isOn.yellow) v = 1;
+  led.yellow.writeSync(v);
+
+  console.table(isOn);
 });
 
 button.blue.watch(function (err, value) {
   if (err) {throw err;}
-  led.blue.writeSync(value);
-  console.log("Blue: " + value);
+  isOn.blue = !isOn.blue;
+  var v = 0;
+  if (isOn.blue) v = 1;
+  led.blue.writeSync(v);
+
+  console.table(isOn);
 });
 
 button.green.watch(function (err, value) {
   if (err) {throw err;}
-  led.green.writeSync(value);
-  console.log("Green: " + value);
+  isOn.green = !isOn.green;
+  var v = 0;
+  if (isOn.green) v = 1;
+  led.green.writeSync(v);
+
+  console.table(isOn);
 });
 
 button.white.watch(function (err, value) {
   if (err) {throw err;}
-  led.white.writeSync(value);
-  console.log("White: " + value);
+  isOn.white = !isOn.white;
+  var v = 0;
+  if (isOn.white) v = 1;
+  led.white.writeSync(v);
+
+  console.table(isOn);
 });
 
 
