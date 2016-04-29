@@ -48,6 +48,8 @@ function exit() {
 
 button.red.watch(function (err, value) {
   if (err) {throw err;}
+  if (value == 1) return;
+
   if ((Date.now() - t.red) < 200) return;
   t.red = Date.now();
 
@@ -61,6 +63,8 @@ button.red.watch(function (err, value) {
 
 button.yellow.watch(function (err, value) {
   if (err) {throw err;}
+  if (value == 1) return;
+  
   if ((Date.now() - t.yellow) < 200) return;
   t.yellow = Date.now();
 
@@ -74,6 +78,8 @@ button.yellow.watch(function (err, value) {
 
 button.blue.watch(function (err, value) {
   if (err) {throw err;}
+  if (value == 1) return;
+  
   if ((Date.now() - t.blue) < 200) return;
   t.blue = Date.now();
 
@@ -87,6 +93,8 @@ button.blue.watch(function (err, value) {
 
 button.green.watch(function (err, value) {
   if (err) {throw err;}
+  if (value == 1) return;
+  
   if ((Date.now() - t.green) < 200) return;
   t.green = Date.now();
 
@@ -100,6 +108,8 @@ button.green.watch(function (err, value) {
 
 button.white.watch(function (err, value) {
   if (err) {throw err;}
+  if (value == 1) return;
+  
   if ((Date.now() - t.white) < 200) return;
   t.white = Date.now();
   
