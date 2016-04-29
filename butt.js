@@ -7,11 +7,11 @@ var led = {
   'white': new Gpio(11, 'low')
 }
 var button = {
-  'red': new Gpio(1, 'in', 'both'), //GOOD
-  'yellow': new Gpio(4, 'in', 'both'), //GOOD
-  'blue': new Gpio(0, 'in', 'both'), //GOOD
-  'green': new Gpio(8, 'in', 'both'), //GOOD
-  'white': new Gpio(7, 'in', 'both'), //GOOD
+  'red': new Gpio(1, 'in', 'falling'), //GOOD
+  'yellow': new Gpio(4, 'in', 'falling'), //GOOD
+  'blue': new Gpio(0, 'in', 'falling'), //GOOD
+  'green': new Gpio(8, 'in', 'falling'), //GOOD
+  'white': new Gpio(7, 'in', 'falling'), //GOOD
 }
 
 var isOn = {
@@ -21,21 +21,6 @@ var isOn = {
   green: false,
   white: false
 }
-
-var i = 0;
-setInterval(function () {
-  led.red.writeSync(i);
-  led.yellow.writeSync(i);
-  led.blue.writeSync(i);
-  led.green.writeSync(i);
-  led.white.writeSync(i);
-  if (i == 1) {
-    i = 0;
-  } else {
-    i = 1;
-  }
-  console.log("LEDS: " + i);
-}, 1000)
 
 function exit() {
   led.red.unexport();
