@@ -61,7 +61,7 @@ button.red.watch(function (err, value) {
   if (isOn.red) v = 1;
   led.red.writeSync(v);
 
-  console.table(isOn);
+  outputTable();
 });
 
 button.yellow.watch(function (err, value) {
@@ -71,7 +71,7 @@ button.yellow.watch(function (err, value) {
   if (isOn.yellow) v = 1;
   led.yellow.writeSync(v);
 
-  console.table(isOn);
+  outputTable();
 });
 
 button.blue.watch(function (err, value) {
@@ -81,7 +81,7 @@ button.blue.watch(function (err, value) {
   if (isOn.blue) v = 1;
   led.blue.writeSync(v);
 
-  console.table(isOn);
+  outputTable();
 });
 
 button.green.watch(function (err, value) {
@@ -91,7 +91,7 @@ button.green.watch(function (err, value) {
   if (isOn.green) v = 1;
   led.green.writeSync(v);
 
-  console.table(isOn);
+  outputTable();
 });
 
 button.white.watch(function (err, value) {
@@ -101,10 +101,12 @@ button.white.watch(function (err, value) {
   if (isOn.white) v = 1;
   led.white.writeSync(v);
 
-  console.table(isOn);
+  outputTable();
 });
 
-
+function outputTable() {
+  console.log("Red: " + isOn.red + "Yellow: " + isOn.yellow + "Blue: " + isOn.blue + "Green: " + isOn.green + "White: " + isOn.white);
+}
 
 process.on('SIGINT', exit);
 
