@@ -14,6 +14,14 @@ var button = {
   'white': new Gpio(7, 'in', 'rising'), //GOOD
 }
 
+var t = {
+  red: 0,
+  yellow: 0,
+  blue: 0,
+  green: 0,
+  white: 0
+}
+
 var isOn = {
   red: false,
   yellow: false,
@@ -40,6 +48,8 @@ function exit() {
 
 button.red.watch(function (err, value) {
   if (err) {throw err;}
+  if ((Date.now() - r.red) < 200) return;
+  r.red = Date.now();
 
   isOn.red = !isOn.red;
   var v = 0;
@@ -51,6 +61,9 @@ button.red.watch(function (err, value) {
 
 button.yellow.watch(function (err, value) {
   if (err) {throw err;}
+  if ((Date.now() - r.yellow) < 200) return;
+  r.yellow = Date.now();
+
   isOn.yellow = !isOn.yellow;
   var v = 0;
   if (isOn.yellow) v = 1;
@@ -61,6 +74,9 @@ button.yellow.watch(function (err, value) {
 
 button.blue.watch(function (err, value) {
   if (err) {throw err;}
+  if ((Date.now() - r.blue) < 200) return;
+  r.blue = Date.now();
+
   isOn.blue = !isOn.blue;
   var v = 0;
   if (isOn.blue) v = 1;
@@ -71,6 +87,9 @@ button.blue.watch(function (err, value) {
 
 button.green.watch(function (err, value) {
   if (err) {throw err;}
+  if ((Date.now() - r.green) < 200) return;
+  r.green = Date.now();
+
   isOn.green = !isOn.green;
   var v = 0;
   if (isOn.green) v = 1;
@@ -81,6 +100,9 @@ button.green.watch(function (err, value) {
 
 button.white.watch(function (err, value) {
   if (err) {throw err;}
+  if ((Date.now() - r.white) < 200) return;
+  r.white = Date.now();
+  
   isOn.white = !isOn.white;
   var v = 0;
   if (isOn.white) v = 1;
@@ -90,7 +112,7 @@ button.white.watch(function (err, value) {
 });
 
 function outputTable() {
-  console.log("Red: " + isOn.red + "Yellow: " + isOn.yellow + "Blue: " + isOn.blue + "Green: " + isOn.green + "White: " + isOn.white);
+  console.log("Red: " + isOn.red + "  Yellow: " + isOn.yellow + "  Blue: " + isOn.blue + "  Green: " + isOn.green + "  White: " + isOn.white);
 }
 
 process.on('SIGINT', exit);
