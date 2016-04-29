@@ -7,11 +7,11 @@ var led = {
   'white': new Gpio(34, 'low')
 }
 var button = {
-  'red': new Gpio(21, 'in', 'rising'),
-  'yellow': new Gpio(22, 'in', 'rising'),
-  'blue': new Gpio(10, 'in', 'rising'),
-  'green': new Gpio(8, 'in', 'rising'), //GOOD
-  'white': new Gpio(7, 'in', 'rising'), //GOOD
+  'red': new Gpio(1, 'in', 'both'),
+  'yellow': new Gpio(4, 'in', 'both'),
+  'blue': new Gpio(17, 'in', 'both'),
+  'green': new Gpio(8, 'in', 'both'), //GOOD
+  'white': new Gpio(7, 'in', 'both'), //GOOD
 }
 
 // led.red.writeSync(1);
