@@ -48,8 +48,8 @@ function exit() {
 
 button.red.watch(function (err, value) {
   if (err) {throw err;}
-  if ((Date.now() - r.red) < 200) return;
-  r.red = Date.now();
+  if ((Date.now() - t.red) < 200) return;
+  t.red = Date.now();
 
   isOn.red = !isOn.red;
   var v = 0;
@@ -61,8 +61,8 @@ button.red.watch(function (err, value) {
 
 button.yellow.watch(function (err, value) {
   if (err) {throw err;}
-  if ((Date.now() - r.yellow) < 200) return;
-  r.yellow = Date.now();
+  if ((Date.now() - t.yellow) < 200) return;
+  t.yellow = Date.now();
 
   isOn.yellow = !isOn.yellow;
   var v = 0;
@@ -74,8 +74,8 @@ button.yellow.watch(function (err, value) {
 
 button.blue.watch(function (err, value) {
   if (err) {throw err;}
-  if ((Date.now() - r.blue) < 200) return;
-  r.blue = Date.now();
+  if ((Date.now() - t.blue) < 200) return;
+  t.blue = Date.now();
 
   isOn.blue = !isOn.blue;
   var v = 0;
@@ -87,8 +87,8 @@ button.blue.watch(function (err, value) {
 
 button.green.watch(function (err, value) {
   if (err) {throw err;}
-  if ((Date.now() - r.green) < 200) return;
-  r.green = Date.now();
+  if ((Date.now() - t.green) < 200) return;
+  t.green = Date.now();
 
   isOn.green = !isOn.green;
   var v = 0;
@@ -100,8 +100,8 @@ button.green.watch(function (err, value) {
 
 button.white.watch(function (err, value) {
   if (err) {throw err;}
-  if ((Date.now() - r.white) < 200) return;
-  r.white = Date.now();
+  if ((Date.now() - t.white) < 200) return;
+  t.white = Date.now();
   
   isOn.white = !isOn.white;
   var v = 0;
