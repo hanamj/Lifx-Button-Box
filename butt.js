@@ -122,7 +122,7 @@ button.white.watch(function (err, value) {
 });
 
 function outputTable() {
-  console.log("Red: " + isOn.red + "  Yellow: " + isOn.yellow + "  Blue: " + isOn.blue + "  Green: " + isOn.green + "  White: " + isOn.white);
+  console.log("R: " + (isOn.red ? 1 : 0) + "  Y: " + (isOn.yellow ? 1 : 0) + "  B: " + (isOn.blue ? 1 : 0) + "  G: " + (isOn.green ? 1 : 0) + "  W: " + (isOn.white ? 1 : 0));
 }
 
 process.on('SIGINT', exit);
