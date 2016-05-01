@@ -1,7 +1,7 @@
 var Gpio = require('onoff').Gpio;
 var Firebase = require("firebase");
 
-var fb = new Firebase('https://lifxbuttons.firebaseio.com/status')
+var fb = new Firebase('https://lifxbuttons.firebaseio.com/')
 
 var led = {
   'red': new Gpio(21, 'low'),
@@ -105,7 +105,8 @@ function outputTable() {
 }
 
 function updateFirebase() {
-  fb.set(isOn)
+  fb.child('status').set(isOn)
+  fb.child('control').set(isOn)
 }
 
 process.on('SIGINT', exit);
