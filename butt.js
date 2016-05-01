@@ -1,4 +1,8 @@
 var Gpio = require('onoff').Gpio;
+var Firebase = require("firebase");
+
+var fb = new Firebase('https://lifxbuttons.firebaseio.com/status')
+
 var led = {
   'red': new Gpio(21, 'low'),
   'yellow': new Gpio(22, 'low'),
@@ -92,6 +96,10 @@ function buttonPress(butt, err, value) {
 
   led[butt].writeSync((isOn[butt] ? 1 : 0));
 
+  fb.set({
+    butt: (isOn[butt] ? 1 : 0)
+  });
+
   outputTable();
 }
 
@@ -101,6 +109,5 @@ function outputTable() {
 
 process.on('SIGINT', exit);
 
-console.log('Starting Init...')
 init();
 
