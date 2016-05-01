@@ -69,6 +69,10 @@ function init() {
     b = snapshot.key()
     v = snapshot.val()
     if (v === true) buttonPress(b, null, 0)
+    
+    var update = {}
+    update[b] = false
+    fb.child('control').set(update)
   });
 
   console.log("Listening...");
