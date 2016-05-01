@@ -66,7 +66,9 @@ function init() {
   });
 
   fb.child('control').on("child_changed", function(snapshot) {
-    console.log("Firebase control: " + snapshot.key());
+    b = snapshot.key()
+    v = snapshot.val()
+    if (v === true) buttonPress(b, null, 0)
   });
 
   console.log("Listening...");
