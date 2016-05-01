@@ -41,6 +41,8 @@ function exit() {
   button.green.unexport();
   button.white.unexport();
 
+  fb.child('status').set({red: false, green: false, blue: false, yellow: false, white: false})
+
   process.exit();
 }
 
