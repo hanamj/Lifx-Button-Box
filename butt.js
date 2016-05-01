@@ -53,12 +53,14 @@ function init() {
   led.yellow.writeSync(1);
   led.white.writeSync(1);
 
+  console.log("Listening...");
+
   setTimeout(function () {
     led.red.writeSync(0);
     led.green.writeSync(0);
     led.blue.writeSync(0);
     led.yellow.writeSync(0);
-    led.white.writeSync(0);
+    led.white.writeSync();
   }, 500)
 }
 
@@ -143,4 +145,3 @@ function outputTable() {
 
 process.on('SIGINT', exit);
 
-console.log("Listening...");
