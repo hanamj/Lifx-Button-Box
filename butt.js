@@ -145,3 +145,5 @@ function outputTable() {
 
 process.on('SIGINT', exit);
 
+init();
+
