@@ -46,6 +46,22 @@ function exit() {
   process.exit();
 }
 
+function init() {
+  led.red.writeSync(1);
+  led.green.writeSync(1);
+  led.blue.writeSync(1);
+  led.yellow.writeSync(1);
+  led.white.writeSync(1);
+
+  setTimeout(function () {
+    led.red.writeSync(0);
+    led.green.writeSync(0);
+    led.blue.writeSync(0);
+    led.yellow.writeSync(0);
+    led.white.writeSync(0);
+  }, 500)
+}
+
 button.red.watch(function (err, value) {
   if (err) {throw err;}
   if (value == 1) return;
