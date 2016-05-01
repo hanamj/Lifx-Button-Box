@@ -96,6 +96,7 @@ function buttonPress(butt, err, value) {
 
   led[butt].writeSync((isOn[butt] ? 1 : 0));
 
+  updateFirebase();
   outputTable();
 }
 
