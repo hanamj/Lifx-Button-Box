@@ -65,6 +65,10 @@ function init() {
     buttonPress('white', err, value);
   });
 
+  fb.child('control').on("child_changed", function(snapshot) {
+    console.log("Firebase control: " + snapshot.val());
+  });
+
   console.log("Listening...");
   flashAll(500);
 }
@@ -106,7 +110,6 @@ function outputTable() {
 
 function updateFirebase() {
   fb.child('status').set(isOn)
-  fb.child('control').set(isOn)
 }
 
 process.on('SIGINT', exit);
