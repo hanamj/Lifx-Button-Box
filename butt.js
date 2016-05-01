@@ -72,7 +72,7 @@ function init() {
     
     var update = {}
     update[b] = false
-    fb.child('control').set(update)
+    fb.child('control').update(update)
   });
 
   console.log("Listening...");
