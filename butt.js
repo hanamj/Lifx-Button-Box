@@ -41,13 +41,36 @@ function exit() {
 }
 
 function init() {
+  button.red.watch(function (err, value) {
+    buttonPress('red', err, value);
+  });
+
+  button.yellow.watch(function (err, value) {
+    buttonPress('yellow', err, value);
+  });
+
+  button.blue.watch(function (err, value) {
+    buttonPress('blue', err, value);
+  });
+
+  button.green.watch(function (err, value) {
+    buttonPress('green', err, value);
+  });
+
+  button.white.watch(function (err, value) {
+    buttonPress('white', err, value);
+  });
+
+  console.log("Listening...");
+  flashAll(500);
+}
+
+function flashAll(t) {
   led.red.writeSync(1);
   led.green.writeSync(1);
   led.blue.writeSync(1);
   led.yellow.writeSync(1);
   led.white.writeSync(1);
-
-  console.log("Listening...");
 
   setTimeout(function () {
     led.red.writeSync(0);
@@ -55,28 +78,8 @@ function init() {
     led.blue.writeSync(0);
     led.yellow.writeSync(0);
     led.white.writeSync();
-  }, 500)
+  }, t)
 }
-
-button.red.watch(function (err, value) {
-  buttonPress('red', err, value);
-});
-
-button.yellow.watch(function (err, value) {
-  buttonPress('yellow', err, value);
-});
-
-button.blue.watch(function (err, value) {
-  buttonPress('blue', err, value);
-});
-
-button.green.watch(function (err, value) {
-  buttonPress('green', err, value);
-});
-
-button.white.watch(function (err, value) {
-  buttonPress('white', err, value);
-});
 
 function buttonPress(butt, err, value) {
   if (err) {throw err;}
@@ -98,5 +101,6 @@ function outputTable() {
 
 process.on('SIGINT', exit);
 
+console.log('Starting Init...')
 init();
 
