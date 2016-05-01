@@ -96,15 +96,15 @@ function buttonPress(butt, err, value) {
 
   led[butt].writeSync((isOn[butt] ? 1 : 0));
 
-  fb.set({
-    butt: (isOn[butt] ? 1 : 0)
-  });
-
   outputTable();
 }
 
 function outputTable() {
   console.log("R: " + (isOn.red ? 1 : 0) + "  Y: " + (isOn.yellow ? 1 : 0) + "  B: " + (isOn.blue ? 1 : 0) + "  G: " + (isOn.green ? 1 : 0) + "  W: " + (isOn.white ? 1 : 0));
+}
+
+function updateFirebase() {
+  fb.set(isOn)
 }
 
 process.on('SIGINT', exit);
