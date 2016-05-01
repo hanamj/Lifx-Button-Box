@@ -59,23 +59,23 @@ function init() {
 }
 
 button.red.watch(function (err, value) {
-  buttonPressed('red', err, value);
+  buttonPress('red', err, value);
 });
 
 button.yellow.watch(function (err, value) {
-  buttonPressed('yellow', err, value);
+  buttonPress('yellow', err, value);
 });
 
 button.blue.watch(function (err, value) {
-  buttonPressed('blue', err, value);
+  buttonPress('blue', err, value);
 });
 
 button.green.watch(function (err, value) {
-  buttonPressed('green', err, value);
+  buttonPress('green', err, value);
 });
 
 button.white.watch(function (err, value) {
-  buttonPressed('white', err, value);
+  buttonPress('white', err, value);
 });
 
 function buttonPress(butt, err, value) {
