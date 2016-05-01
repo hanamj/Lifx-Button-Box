@@ -66,7 +66,7 @@ function init() {
   });
 
   fb.child('control').on("child_changed", function(snapshot) {
-    console.log("Firebase control: " + snapshot);
+    console.log("Firebase control: " + snapshot.key());
   });
 
   console.log("Listening...");
