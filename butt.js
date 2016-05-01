@@ -14,13 +14,7 @@ var button = {
   'white': new Gpio(7, 'in', 'rising'), //GOOD
 }
 
-var t = {
-  red: 0,
-  yellow: 0,
-  blue: 0,
-  green: 0,
-  white: 0
-}
+var lastPressed = 0;
 
 var isOn = {
   red: false,
@@ -65,79 +59,38 @@ function init() {
 }
 
 button.red.watch(function (err, value) {
-  if (err) {throw err;}
-  if (value == 1) return;
-
-  if ((Date.now() - t.red) < 200) return;
-  t.red = Date.now();
-
-  isOn.red = !isOn.red;
-  var v = 0;
-  if (isOn.red) v = 1;
-  led.red.writeSync(v);
-
-  outputTable();
+  buttonPressed('red', err, value);
 });
 
 button.yellow.watch(function (err, value) {
-  if (err) {throw err;}
-  if (value == 1) return;
-  
-  if ((Date.now() - t.yellow) < 200) return;
-  t.yellow = Date.now();
-
-  isOn.yellow = !isOn.yellow;
-  var v = 0;
-  if (isOn.yellow) v = 1;
-  led.yellow.writeSync(v);
-
-  outputTable();
+  buttonPressed('yellow', err, value);
 });
 
 button.blue.watch(function (err, value) {
-  if (err) {throw err;}
-  if (value == 1) return;
-  
-  if ((Date.now() - t.blue) < 200) return;
-  t.blue = Date.now();
-
-  isOn.blue = !isOn.blue;
-  var v = 0;
-  if (isOn.blue) v = 1;
-  led.blue.writeSync(v);
-
-  outputTable();
+  buttonPressed('blue', err, value);
 });
 
 button.green.watch(function (err, value) {
-  if (err) {throw err;}
-  if (value == 1) return;
-  
-  if ((Date.now() - t.green) < 200) return;
-  t.green = Date.now();
-
-  isOn.green = !isOn.green;
-  var v = 0;
-  if (isOn.green) v = 1;
-  led.green.writeSync(v);
-
-  outputTable();
+  buttonPressed('green', err, value);
 });
 
 button.white.watch(function (err, value) {
+  buttonPressed('white', err, value);
+});
+
+function buttonPress(butt, err, value) {
   if (err) {throw err;}
-  if (value == 1) return;
-  
-  if ((Date.now() - t.white) < 200) return;
-  t.white = Date.now();
-  
-  isOn.white = !isOn.white;
-  var v = 0;
-  if (isOn.white) v = 1;
-  led.white.writeSync(v);
+  if (value == 1) return; //We only care when the button is first pushed, not when released
+
+  if ((Date.now() - lastPressed) < 200) return;
+  lastPressed = Date.now();
+
+  isOn[butt] = !isOn[butt];
+
+  led[butt].writeSync((isOn[butt] ? 1 : 0));
 
   outputTable();
-});
+}
 
 function outputTable() {
   console.log("R: " + (isOn.red ? 1 : 0) + "  Y: " + (isOn.yellow ? 1 : 0) + "  B: " + (isOn.blue ? 1 : 0) + "  G: " + (isOn.green ? 1 : 0) + "  W: " + (isOn.white ? 1 : 0));
