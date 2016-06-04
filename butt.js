@@ -121,8 +121,7 @@ function buttonPress(butt, err, value) {
 
   updateFirebase();
   outputTable();
-
-  toggle()
+  changeLight()
 }
 
 function outputTable() {
