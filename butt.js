@@ -139,7 +139,7 @@ function toggle() {
                 'content-length': '17' }
   }
 
-  var c = Math.floor(Math.random()*16777215).toString(16);
+  var c = "#" + Math.floor(Math.random()*16777215).toString(16);
 
   needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"#000000", power: ON, brightness: BRIGHTNESS, duration: DURATION}, options, function(err, resp) {
     console.log(resp.body.results.status)
