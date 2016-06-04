@@ -139,9 +139,8 @@ function toggle() {
                 'content-length': '17' }
   }
 
-  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"green"}, options, function(err, resp) {
-    console.log(err)
-    console.log(resp)
+  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"#000000"}, options, function(err, resp) {
+    console.log(resp.results.status)
   });
 }
 
