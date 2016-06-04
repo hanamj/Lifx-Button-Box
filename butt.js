@@ -1,9 +1,17 @@
 // LIFX - c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65
+// "id": "d073d5001d7b",
+// "uuid": "028dfd65-d2f0-4d7c-af9b-0b7c670d8786",
 
 var Gpio = require('onoff').Gpio;
 var Firebase = require("firebase");
+var needle = require("needle");
 
 var fb = new Firebase('https://lifxbuttons.firebaseio.com/')
+
+var BRIGHTNESS = 0.2,
+    DURATION = 0.5,
+    ON = "on",
+    OFF = "off";
 
 var led = {
   'red': new Gpio(21, 'low'),
@@ -113,6 +121,8 @@ function buttonPress(butt, err, value) {
 
   updateFirebase();
   outputTable();
+
+  toggle()
 }
 
 function outputTable() {
@@ -121,6 +131,17 @@ function outputTable() {
 
 function updateFirebase() {
   fb.child('status').set(isOn)
+}
+
+function toggle() {
+  var options = {
+    headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65' }
+  }
+
+  needle.post('https://api.lifx.com/v1/lights/d073d5001d7b/state', {power: ON, brightness: BRIGHTNESS, duration: DURATION, color: "green"}, options, function(err, resp) {
+    console.log(err)
+    console.log(resp)
+  });
 }
 
 process.on('SIGINT', exit);
