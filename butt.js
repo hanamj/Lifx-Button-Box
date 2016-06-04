@@ -135,7 +135,8 @@ function updateFirebase() {
 
 function toggle() {
   var options = {
-    headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65' }
+    headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65',
+                'Content-Type': 'application/json' }
   }
 
   needle.post('https://api.lifx.com/v1/lights/d073d5001d7b/state', {power: ON, brightness: BRIGHTNESS, duration: DURATION, color: "green"}, options, function(err, resp) {
