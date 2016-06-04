@@ -133,20 +133,43 @@ function updateFirebase() {
   fb.child('status').set(isOn)
 }
 
-function toggle() {
+function changeLight() {
+  var color = calculateColor();
   var options = {
     headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65',
                 'content-length': '17' }
   }
 
-  var c = "#" + Math.floor(Math.random()*16777215).toString(16);
-
-  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:c, power: ON, brightness: BRIGHTNESS, duration: DURATION}, options, function(err, resp) {
+  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:color, power: ON, brightness: BRIGHTNESS, duration: DURATION}, options, function(err, resp) {
     //console.log(resp.body.results.status)
   });
+}
+
+function calculateColor() {
+  var r = 0;
+  var g = 0;
+  var b = 0;
+
+  if (isOn.red) r = 255;
+  if (isOn.green) g = 255;
+  if (isOn.blue) b = 255;
+  
+  if (isOn.yellow) {
+    if (isOn.blue) {
+      b = 180
+    } else {
+      b = 106
+    }
+    r = 255
+    g = 255
+  }
+
+  return "rgb:" + r + "," + g + "," + b;
 }
 
 process.on('SIGINT', exit);
 
 init();
+
+
 
