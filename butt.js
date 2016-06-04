@@ -1,3 +1,5 @@
+// LIFX - c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65
+
 var Gpio = require('onoff').Gpio;
 var Firebase = require("firebase");
 
@@ -10,6 +12,7 @@ var led = {
   'green': new Gpio(9, 'low'),
   'white': new Gpio(11, 'low')
 }
+
 var button = {
   'red': new Gpio(1, 'in', 'rising'), //GOOD
   'yellow': new Gpio(4, 'in', 'rising'), //GOOD
