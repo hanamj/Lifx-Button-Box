@@ -138,7 +138,7 @@ function toggle() {
     headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65'}
   }
 
-  needle.post('https://api.lifx.com/v1/lights/d073d5001d7b/state', 'power=on,brightness=0.1,duration=1,color=green', options, function(err, resp) {
+  needle.post('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color: "on"}, options, function(err, resp) {
     console.log(err)
     console.log(resp)
   });
