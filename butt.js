@@ -139,7 +139,7 @@ function toggle() {
                 'Content-Type': 'application/json' }
   }
 
-  needle.post('https://api.lifx.com/v1/lights/d073d5001d7b/state', {power: ON, brightness: BRIGHTNESS, duration: DURATION, color: "green"}, options, function(err, resp) {
+  needle.post('https://api.lifx.com/v1/lights/d073d5001d7b/state', '{"power":"on","brightness":0.1,"duration":1,"color":"green"}', options, function(err, resp) {
     console.log(err)
     console.log(resp)
   });
