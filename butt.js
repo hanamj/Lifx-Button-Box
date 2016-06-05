@@ -12,7 +12,7 @@ var BRIGHTNESS = 0.2,
     DURATION = 0.5,
     POWER = false;
 
-var FLASHINTERVAL,
+var FLASHINTERVAL = [],
     FLASHSTATE = 1;
 
 var led = {
@@ -220,7 +220,7 @@ function turnOff() {
 }
 
 function startFlash() {
-  FLASHINTERVAL = setInterval(function () {
+  var fi = setInterval(function () {
     led['white'].writeSync(FLASHSTATE);
     if (FLASHSTATE == 1) {
       FLASHSTATE = 0;
@@ -228,10 +228,14 @@ function startFlash() {
       FLASHSTATE = 1;
     }
   }, 250);
+
+  FLASHINTERVAL.push(fi)
 }
 
 function stopFlash() {
-  clearInterval(FLASHINTERVAL)
+  FLASHINTERVAL.forEach(function (v) {
+    clearInterval(v)
+  })
   led['white'].writeSync((isOn.white ? 1 : 0));
 }
 process.on('SIGINT', exit);
