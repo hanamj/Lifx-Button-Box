@@ -94,7 +94,7 @@ function init() {
 
   //Turn on Red to start us off
   setTimeout(function () {
-    buttonPress('red', null, 0)
+    turnOn();
   }, 1000)
 
 }
@@ -137,7 +137,7 @@ function buttonPress(butt, err, value) {
 }
 
 function outputTable() {
-  console.log("R: " + (isOn.red ? 1 : 0) + "  Y: " + (isOn.yellow ? 1 : 0) + "  B: " + (isOn.blue ? 1 : 0) + "  G: " + (isOn.green ? 1 : 0) + "  W: " + (isOn.white ? 1 : 0));
+  console.log("R: " + (isOn.red ? 1 : 0) + "  Y: " + (isOn.yellow ? 1 : 0) + "  B: " + (isOn.blue ? 1 : 0) + "  G: " + (isOn.green ? 1 : 0) + "  W: " + (isOn.white ? 1 : 0) + "  Power: " + POWER);
 }
 
 function updateFirebase() {
@@ -157,7 +157,7 @@ function changeLight() {
                 'content-length': '17' }
   }
 
-  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: (POWER ? "true" : "false"), brightness: b, duration: DURATION}, options, function(err, resp) {
+  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: (POWER ? "on" : "off"), brightness: b, duration: DURATION}, options, function(err, resp) {
     //console.log(resp.body.results.status)
   });
 }
