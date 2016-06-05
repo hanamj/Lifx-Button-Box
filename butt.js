@@ -189,11 +189,11 @@ function turnOn() {
     isOn[v] = true;
     led[v].writeSync(1); 
   })
-  
+  POWER = true
+
   updateFirebase();
   outputTable();
 
-  POWER = true
   changeLight()
 }
 
@@ -202,11 +202,11 @@ function turnOff() {
     isOn[v] = false
     led[v].writeSync(0)
   })
-  
+  POWER = false
+
   updateFirebase();
   outputTable();
 
-  POWER = false
   changeLight()
 }
 
