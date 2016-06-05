@@ -150,9 +150,9 @@ function changeLight() {
 }
 
 function calculateColor() {
-  var r = 0;
-  var g = 0;
-  var b = 0;
+  var r = 10;
+  var g = 10;
+  var b = 10;
 
   if (isOn.red) r = 255;
   if (isOn.green) g = 255;
@@ -175,6 +175,8 @@ function calculateColor() {
 process.on('SIGINT', exit);
 
 init()
-buttonPress('red', null, 0)
+setTimeout(function () {
+  buttonPress('red', null, 0)
+}, 750)
 
 
