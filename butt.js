@@ -135,7 +135,7 @@ function updateFirebase() {
 function changeLight() {
   var c = calculateColor();
   if ((c.r == 0) && (c.g == 0) && (c.b == 0)) {
-    b = 0
+    b = 0.1
   } else {
     b = BRIGHTNESS
   }
@@ -150,9 +150,9 @@ function changeLight() {
 }
 
 function calculateColor() {
-  var r = 10;
-  var g = 10;
-  var b = 10;
+  var r = 0;
+  var g = 0;
+  var b = 0;
 
   if (isOn.red) r = 255;
   if (isOn.green) g = 255;
