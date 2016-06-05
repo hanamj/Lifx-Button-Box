@@ -81,7 +81,10 @@ function init() {
   fb.child('control').on("child_changed", function(snapshot) {
     b = snapshot.key()
     v = snapshot.val()
-    if (v === true) buttonPress(b, null, 0)
+    console.log(b)
+    console.log(v)
+
+    if (v !== false) buttonPress(b, null, 0)
     
     var update = {}
     update[b] = false
