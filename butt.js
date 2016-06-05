@@ -88,6 +88,7 @@ function init() {
     
     var update = {};
     update[b] = false;
+    console.log(JSON.stringify(update))
     fb.child('control').update(update);
   });
 
