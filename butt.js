@@ -10,7 +10,7 @@ var fb = new Firebase('https://lifxbuttons.firebaseio.com/')
 
 var BRIGHTNESS = 0.2,
     DURATION = 0.5,
-    POWER = "off";
+    POWER = false;
 
 var led = {
   'red': new Gpio(21, 'low'),
@@ -129,8 +129,8 @@ function buttonPress(butt, err, value) {
   outputTable();
   
   if (butt === "white") {
-    if (POWER === "off") turnOn();
-    if (POWER === "on") turnOff();
+    if (!POWER) turnOn();
+    if (POWER) turnOff();
   } else {
     changeLight();
   }
@@ -157,7 +157,7 @@ function changeLight() {
                 'content-length': '17' }
   }
 
-  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: POWER, brightness: b, duration: DURATION}, options, function(err, resp) {
+  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: (POWER ? "true" : "false"), brightness: b, duration: DURATION}, options, function(err, resp) {
     //console.log(resp.body.results.status)
   });
 }
@@ -189,16 +189,16 @@ function turnOn() {
   if (!(isOn.green)) buttonPress('green', null, 0);
   if (!(isOn.blue)) buttonPress('blue', null, 0);
 
-  POWER = "on"
+  POWER = true
   changeLight()
 }
 
 function turnOff() {
+  POWER = false
   if (isOn.red) buttonPress('red', null, 0);
   if (isOn.green) buttonPress('green', null, 0);
   if (isOn.blue) buttonPress('blue', null, 0);
 
-  POWER = "off"
   changeLight()
 }
 
