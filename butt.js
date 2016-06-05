@@ -42,6 +42,8 @@ var isOn = {
 }
 
 function exit() {
+  turnOff();
+  
   led.red.unexport();
   led.yellow.unexport();
   led.blue.unexport();
