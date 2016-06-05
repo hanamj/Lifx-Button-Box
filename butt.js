@@ -122,6 +122,9 @@ function buttonPress(butt, err, value) {
   if ((Date.now() - lastPressed) < 200) return;
   lastPressed = Date.now();
 
+  //Don't do anything if "power" is off, unless it's the power button, of course
+  if ((butt !== "white") && (!POWER) return;
+
   isOn[butt] = !isOn[butt];
   led[butt].writeSync((isOn[butt] ? 1 : 0));
 
