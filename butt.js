@@ -168,6 +168,7 @@ function calculateColor() {
     g = 255
   }
 
+  console.log("rgb:" + r + "," + g + "," + b)
   return {r:r, g:g, b:b};
 }
 
