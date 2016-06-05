@@ -185,9 +185,9 @@ function calculateColor() {
 }
 
 function turnOn() {
-  if (!isOn.red) buttonPress('red', null, 0);
-  if (!isOn.green) buttonPress('green', null, 0);
-  if (!isOn.blue) buttonPress('blue', null, 0);
+  if (!(isOn.red) buttonPress('red', null, 0);
+  if (!(isOn.green)) buttonPress('green', null, 0);
+  if (!(isOn.blue)) buttonPress('blue', null, 0);
 
   POWER = "on"
   changeLight()
