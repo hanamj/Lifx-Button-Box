@@ -152,8 +152,6 @@ function changeLight() {
     b = BRIGHTNESS
   }
 
-  if (POWER === "off") b = 0;
-
   var options = {
     headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65',
                 'content-length': '17' }
