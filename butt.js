@@ -79,15 +79,13 @@ function init() {
   });
 
   fb.child('control').on("child_changed", function(snapshot) {
-    b = snapshot.key()
+    butt = snapshot.key()
     v = snapshot.val()
-    console.log(b)
-    console.log(v)
 
-    if (v === true) buttonPress(b, null, 0)
+    if (v === true) buttonPress(butt, null, 0)
     
     var update = {};
-    update[b] = false;
+    update[butt] = false;
     console.log(JSON.stringify(update))
     fb.child('control').update(update);
   });
