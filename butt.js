@@ -134,7 +134,7 @@ function updateFirebase() {
 
 function changeLight() {
   var c = calculateColor();
-  if ((c.r == 0) && (c.b == 0) && (c.b == 0)) {
+  if ((c.r == 0) && (c.g == 0) && (c.b == 0)) {
     b = 0
   } else {
     b = BRIGHTNESS
@@ -174,7 +174,7 @@ function calculateColor() {
 
 process.on('SIGINT', exit);
 
-init();
-
+init()
+buttonPress('red', null, 0)
 
 
