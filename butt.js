@@ -10,8 +10,7 @@ var fb = new Firebase('https://lifxbuttons.firebaseio.com/')
 
 var BRIGHTNESS = 0.2,
     DURATION = 0.5,
-    ON = "on",
-    OFF = "off";
+    POWER = "off";
 
 var led = {
   'red': new Gpio(21, 'low'),
@@ -83,7 +82,7 @@ function init() {
     v = snapshot.val()
 
     if (v === true) buttonPress(butt, null, 0)
-    
+
     var update = {};
     update[butt] = false;
     console.log(JSON.stringify(update))
@@ -92,6 +91,12 @@ function init() {
 
   console.log("Listening...");
   flashAll(500);
+
+  //Turn on Red to start us off
+  setTimeout(function () {
+    buttonPress('red', null, 0)
+  }, 1000)
+
 }
 
 function flashAll(t) {
@@ -118,12 +123,17 @@ function buttonPress(butt, err, value) {
   lastPressed = Date.now();
 
   isOn[butt] = !isOn[butt];
-
   led[butt].writeSync((isOn[butt] ? 1 : 0));
 
   updateFirebase();
   outputTable();
-  changeLight()
+  
+  if (butt === "white") {
+    if (POWER === "off") turnOn();
+    if (POWER === "on") turnOff();
+  } else {
+    changeLight();
+  }
 }
 
 function outputTable() {
@@ -146,7 +156,7 @@ function changeLight() {
                 'content-length': '17' }
   }
 
-  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: ON, brightness: b, duration: DURATION}, options, function(err, resp) {
+  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: POWER, brightness: b, duration: DURATION}, options, function(err, resp) {
     //console.log(resp.body.results.status)
   });
 }
@@ -170,15 +180,29 @@ function calculateColor() {
     g = 255
   }
 
-  console.log("rgb:" + r + "," + g + "," + b)
   return {r:r, g:g, b:b};
+}
+
+function turnOn() {
+  if (!isOn.red) buttonPress('red', null, 0);
+  if (!isOn.green) buttonPress('green', null, 0);
+  if (!isOn.blue) buttonPress('blue', null, 0);
+
+  POWER = "on"
+  changeLight()
+}
+
+function turnOff() {
+  if (isOn.red) buttonPress('red', null, 0);
+  if (isOn.green) buttonPress('green', null, 0);
+  if (isOn.blue) buttonPress('blue', null, 0);
+
+  POWER = "on"
+  changeLight()
 }
 
 process.on('SIGINT', exit);
 
 init()
-setTimeout(function () {
-  buttonPress('red', null, 0)
-}, 750)
 
 
