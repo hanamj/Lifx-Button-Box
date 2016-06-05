@@ -129,8 +129,8 @@ function buttonPress(butt, err, value) {
   outputTable();
   
   if (butt === "white") {
-    if (!POWER) turnOn();
-    if (POWER) turnOff();
+    if (!isOn.white) turnOn();
+    if (isOn.white) turnOff();
   } else {
     changeLight();
   }
