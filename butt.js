@@ -133,13 +133,18 @@ function updateFirebase() {
 }
 
 function changeLight() {
-  var color = calculateColor();
+  var c = calculateColor();
+  if ((c.r == 0) && (c.b == 0) && (c.b == 0)) {
+    b = 0
+  } else {
+    b = BRIGHTNESS
+  }
   var options = {
     headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65',
                 'content-length': '17' }
   }
 
-  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:color, power: ON, brightness: BRIGHTNESS, duration: DURATION}, options, function(err, resp) {
+  needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: ON, brightness: b, duration: DURATION}, options, function(err, resp) {
     //console.log(resp.body.results.status)
   });
 }
@@ -163,7 +168,7 @@ function calculateColor() {
     g = 255
   }
 
-  return "rgb:" + r + "," + g + "," + b;
+  return {r:r, g:g, b:b};
 }
 
 process.on('SIGINT', exit);
