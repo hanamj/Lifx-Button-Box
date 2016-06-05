@@ -111,7 +111,7 @@ function flashAll(t) {
     led.green.writeSync(0);
     led.blue.writeSync(0);
     led.yellow.writeSync(0);
-    led.white.writeSync();
+    led.white.writeSync(0);
   }, t)
 }
 
@@ -185,20 +185,28 @@ function calculateColor() {
 }
 
 function turnOn() {
-  if (!(isOn.red)) buttonPress('red', null, 0);
-  if (!(isOn.green)) buttonPress('green', null, 0);
-  if (!(isOn.blue)) buttonPress('blue', null, 0);
+  ['red', 'green', 'blue'].forEach(function (v) {
+    isOn[v] = true;
+    led[v].writeSync(1); 
+  })
+  
+  updateFirebase();
+  outputTable();
 
   POWER = true
   changeLight()
 }
 
 function turnOff() {
-  POWER = false
-  if (isOn.red) buttonPress('red', null, 0);
-  if (isOn.green) buttonPress('green', null, 0);
-  if (isOn.blue) buttonPress('blue', null, 0);
+  ['red', 'green', 'blue'].forEach(function (v) {
+    isOn[v] = false
+    led[v].writeSync(0)
+  })
+  
+  updateFirebase();
+  outputTable();
 
+  POWER = false
   changeLight()
 }
 
