@@ -151,6 +151,9 @@ function changeLight() {
   } else {
     b = BRIGHTNESS
   }
+
+  if (POWER === "off") b = 0;
+
   var options = {
     headers: { 'Authorization': 'Bearer c7798a45f018bf9940379697267bd88dadeb937fc4865e6952e1fc98688feb65',
                 'content-length': '17' }
@@ -197,7 +200,7 @@ function turnOff() {
   if (isOn.green) buttonPress('green', null, 0);
   if (isOn.blue) buttonPress('blue', null, 0);
 
-  POWER = "on"
+  POWER = "off"
   changeLight()
 }
 
