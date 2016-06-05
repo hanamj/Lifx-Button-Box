@@ -12,6 +12,9 @@ var BRIGHTNESS = 0.2,
     DURATION = 0.5,
     POWER = false;
 
+var FLASHINTERVAL,
+    FLASHSTATE = 1;
+
 var led = {
   'red': new Gpio(21, 'low'),
   'yellow': new Gpio(22, 'low'),
@@ -161,9 +164,11 @@ function changeLight() {
   }
 
   console.log("Sending Lifx request...")
+  startFlash()
   needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: (POWER ? "on" : "off"), brightness: b, duration: DURATION}, options, function(err, resp) {
     //console.log(resp.body.results.status)
     console.log("Lifx response received.")
+    stopFlash()
   });
 }
 
@@ -215,6 +220,21 @@ function turnOff() {
   changeLight()
 }
 
+function startFlash() {
+  FLASHINTERVAL = setInterval(function () {
+    led['white'].writeSync(FLASHSTATE);
+    if (FLASHSTATE == 1) {
+      FLASHSTATE = 0;
+    } else {
+      FLASHSTATE = 1;
+    }
+  }, 250);
+}
+
+function stopFlash() {
+  cancelInterval(FLASHINTERVAL)
+  led['white'].writeSync((isOn.white ? 1 : 0));
+}
 process.on('SIGINT', exit);
 
 init()
