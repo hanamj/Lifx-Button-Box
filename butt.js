@@ -157,8 +157,10 @@ function changeLight() {
                 'content-length': '17' }
   }
 
+  console.log("Sending Lifx request...")
   needle.put('https://api.lifx.com/v1/lights/d073d5001d7b/state', {color:"rgb:" + c.r + "," + c.g + "," + c.b, power: (POWER ? "on" : "off"), brightness: b, duration: DURATION}, options, function(err, resp) {
     //console.log(resp.body.results.status)
+    console.log("Lifx response received.")
   });
 }
 
