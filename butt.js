@@ -185,7 +185,7 @@ function calculateColor() {
 }
 
 function turnOn() {
-  ['red', 'green', 'blue'].forEach(function (v) {
+  ['red', 'green', 'blue', 'white'].forEach(function (v) {
     isOn[v] = true;
     led[v].writeSync(1); 
   })
@@ -198,7 +198,7 @@ function turnOn() {
 }
 
 function turnOff() {
-  ['red', 'green', 'blue'].forEach(function (v) {
+  ['red', 'green', 'blue', 'white'].forEach(function (v) {
     isOn[v] = false
     led[v].writeSync(0)
   })
