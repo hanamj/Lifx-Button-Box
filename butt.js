@@ -84,11 +84,11 @@ function init() {
     console.log(b)
     console.log(v)
 
-    if (v !== false) buttonPress(b, null, 0)
+    if (v === true) buttonPress(b, null, 0)
     
-    var update = {}
-    update[b] = false
-    fb.child('control').update(update)
+    var update = {};
+    update[b] = false;
+    fb.child('control').update(update);
   });
 
   console.log("Listening...");
