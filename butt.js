@@ -131,13 +131,13 @@ function buttonPress(butt, err, value) {
   led[butt].writeSync((isOn[butt] ? 1 : 0));
 
   updateFirebase();
-  outputTable();
   
   if (butt === "white") {
     if (isOn.white) turnOn();
     if (!isOn.white) turnOff();
   } else {
     changeLight();
+    outputTable();
   }
 }
 
