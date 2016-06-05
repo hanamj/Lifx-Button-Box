@@ -92,8 +92,7 @@ function init() {
     fb.child('control').update(update);
   });
 
-  console.log("Listening...");
-  flashAll(500);
+  console.log("Turning on...");
 
   //Turn on Red to start us off
   setTimeout(function () {
@@ -232,7 +231,7 @@ function startFlash() {
 }
 
 function stopFlash() {
-  cancelInterval(FLASHINTERVAL)
+  clearInterval(FLASHINTERVAL)
   led['white'].writeSync((isOn.white ? 1 : 0));
 }
 process.on('SIGINT', exit);
